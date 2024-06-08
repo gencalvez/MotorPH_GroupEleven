@@ -81,19 +81,19 @@ public class EmployeeAccessLeave extends javax.swing.JFrame {
         date1 = new javax.swing.JLabel();
         time1 = new javax.swing.JLabel();
         noe_title4 = new javax.swing.JLabel();
-        id_field1 = new javax.swing.JTextField();
-        firstName_field1 = new javax.swing.JTextField();
-        lastName_field1 = new javax.swing.JTextField();
+        emp_id = new javax.swing.JTextField();
+        firstName = new javax.swing.JTextField();
+        lastName = new javax.swing.JTextField();
         noe_title5 = new javax.swing.JLabel();
         noe_title6 = new javax.swing.JLabel();
         date_lbl1 = new javax.swing.JLabel();
         leave_type1 = new javax.swing.JLabel();
         leaveTypeComboBox1 = new javax.swing.JComboBox<>();
-        addButton1 = new javax.swing.JButton();
         jScrollPane2 = new javax.swing.JScrollPane();
-        leaveTable1 = new javax.swing.JTable();
-        SimpleDate1 = new com.toedter.calendar.JDateChooser();
+        tableLeave = new javax.swing.JTable();
+        setDate = new com.toedter.calendar.JDateChooser();
         backButton1 = new javax.swing.JButton();
+        fileLeave = new javax.swing.JButton();
 
         greetings.setFont(new java.awt.Font("Gadugi", 0, 14)); // NOI18N
         greetings.setForeground(new java.awt.Color(217, 217, 217));
@@ -251,22 +251,22 @@ public class EmployeeAccessLeave extends javax.swing.JFrame {
         noe_title4.setForeground(new java.awt.Color(0, 0, 0));
         noe_title4.setText("Employee ID :");
 
-        id_field1.setBackground(new java.awt.Color(217, 217, 217));
-        id_field1.setFont(new java.awt.Font("Gadugi", 0, 12)); // NOI18N
-        id_field1.setForeground(new java.awt.Color(29, 53, 87));
-        id_field1.addKeyListener(new java.awt.event.KeyAdapter() {
+        emp_id.setBackground(new java.awt.Color(217, 217, 217));
+        emp_id.setFont(new java.awt.Font("Gadugi", 0, 12)); // NOI18N
+        emp_id.setForeground(new java.awt.Color(29, 53, 87));
+        emp_id.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyReleased(java.awt.event.KeyEvent evt) {
-                id_field1KeyReleased(evt);
+                emp_idKeyReleased(evt);
             }
         });
 
-        firstName_field1.setBackground(new java.awt.Color(217, 217, 217));
-        firstName_field1.setFont(new java.awt.Font("Gadugi", 0, 12)); // NOI18N
-        firstName_field1.setForeground(new java.awt.Color(29, 53, 87));
+        firstName.setBackground(new java.awt.Color(217, 217, 217));
+        firstName.setFont(new java.awt.Font("Gadugi", 0, 12)); // NOI18N
+        firstName.setForeground(new java.awt.Color(29, 53, 87));
 
-        lastName_field1.setBackground(new java.awt.Color(217, 217, 217));
-        lastName_field1.setFont(new java.awt.Font("Gadugi", 0, 12)); // NOI18N
-        lastName_field1.setForeground(new java.awt.Color(29, 53, 87));
+        lastName.setBackground(new java.awt.Color(217, 217, 217));
+        lastName.setFont(new java.awt.Font("Gadugi", 0, 12)); // NOI18N
+        lastName.setForeground(new java.awt.Color(29, 53, 87));
 
         noe_title5.setFont(new java.awt.Font("Gadugi", 0, 12)); // NOI18N
         noe_title5.setForeground(new java.awt.Color(0, 0, 0));
@@ -294,20 +294,10 @@ public class EmployeeAccessLeave extends javax.swing.JFrame {
             }
         });
 
-        addButton1.setBackground(new java.awt.Color(51, 0, 0));
-        addButton1.setFont(new java.awt.Font("Gadugi", 0, 12)); // NOI18N
-        addButton1.setForeground(new java.awt.Color(217, 217, 217));
-        addButton1.setText("File Leave");
-        addButton1.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                addButton1ActionPerformed(evt);
-            }
-        });
-
-        leaveTable1.setBackground(new java.awt.Color(217, 217, 217));
-        leaveTable1.setFont(new java.awt.Font("Gadugi", 0, 14)); // NOI18N
-        leaveTable1.setForeground(new java.awt.Color(29, 53, 87));
-        leaveTable1.setModel(new javax.swing.table.DefaultTableModel(
+        tableLeave.setBackground(new java.awt.Color(217, 217, 217));
+        tableLeave.setFont(new java.awt.Font("Gadugi", 0, 14)); // NOI18N
+        tableLeave.setForeground(new java.awt.Color(29, 53, 87));
+        tableLeave.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
 
             },
@@ -330,10 +320,10 @@ public class EmployeeAccessLeave extends javax.swing.JFrame {
                 return canEdit [columnIndex];
             }
         });
-        jScrollPane2.setViewportView(leaveTable1);
+        jScrollPane2.setViewportView(tableLeave);
 
-        SimpleDate1.setBackground(new java.awt.Color(255, 255, 255));
-        SimpleDate1.setForeground(new java.awt.Color(153, 153, 153));
+        setDate.setBackground(new java.awt.Color(255, 255, 255));
+        setDate.setForeground(new java.awt.Color(153, 153, 153));
 
         backButton1.setBackground(new java.awt.Color(51, 0, 0));
         backButton1.setFont(new java.awt.Font("Gadugi", 0, 12)); // NOI18N
@@ -342,6 +332,16 @@ public class EmployeeAccessLeave extends javax.swing.JFrame {
         backButton1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 backButton1ActionPerformed(evt);
+            }
+        });
+
+        fileLeave.setBackground(new java.awt.Color(51, 0, 0));
+        fileLeave.setFont(new java.awt.Font("Gadugi", 0, 12)); // NOI18N
+        fileLeave.setForeground(new java.awt.Color(217, 217, 217));
+        fileLeave.setText("File Leave");
+        fileLeave.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                fileLeaveActionPerformed(evt);
             }
         });
 
@@ -373,9 +373,9 @@ public class EmployeeAccessLeave extends javax.swing.JFrame {
                                     .addComponent(noe_title6, javax.swing.GroupLayout.Alignment.TRAILING))
                                 .addGap(18, 18, 18)
                                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(firstName_field1, javax.swing.GroupLayout.PREFERRED_SIZE, 146, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(lastName_field1, javax.swing.GroupLayout.PREFERRED_SIZE, 146, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(id_field1, javax.swing.GroupLayout.PREFERRED_SIZE, 146, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                                    .addComponent(firstName, javax.swing.GroupLayout.PREFERRED_SIZE, 146, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(lastName, javax.swing.GroupLayout.PREFERRED_SIZE, 146, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(emp_id, javax.swing.GroupLayout.PREFERRED_SIZE, 146, javax.swing.GroupLayout.PREFERRED_SIZE))))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 101, Short.MAX_VALUE)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                             .addComponent(leave_type1)
@@ -383,12 +383,12 @@ public class EmployeeAccessLeave extends javax.swing.JFrame {
                         .addGap(18, 18, 18)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                             .addComponent(leaveTypeComboBox1, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(SimpleDate1, javax.swing.GroupLayout.PREFERRED_SIZE, 146, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(setDate, javax.swing.GroupLayout.PREFERRED_SIZE, 146, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGap(65, 65, 65)))
                 .addContainerGap())
             .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGap(274, 274, 274)
-                .addComponent(addButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 102, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(277, 277, 277)
+                .addComponent(fileLeave, javax.swing.GroupLayout.PREFERRED_SIZE, 102, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
@@ -406,23 +406,23 @@ public class EmployeeAccessLeave extends javax.swing.JFrame {
                         .addGap(30, 30, 30)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(noe_title4)
-                            .addComponent(id_field1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(emp_id, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(date_lbl1, javax.swing.GroupLayout.Alignment.TRAILING)
                             .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                                 .addComponent(noe_title6)
-                                .addComponent(firstName_field1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                    .addComponent(SimpleDate1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addComponent(firstName, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                    .addComponent(setDate, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(noe_title5)
-                    .addComponent(lastName_field1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(lastName, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(leave_type1)
                     .addComponent(leaveTypeComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(31, 31, 31)
-                .addComponent(addButton1)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGap(25, 25, 25)
+                .addComponent(fileLeave)
+                .addGap(18, 18, 18)
                 .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 114, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
                 .addComponent(backButton1)
@@ -444,22 +444,22 @@ public class EmployeeAccessLeave extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void id_fieldKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_id_fieldKeyReleased
-        // SEARCH EMPLOYEE NAME
+        // SEARCH EMPLOYEE ID
         try {
             Class.forName("org.postgresql.Driver");
             Connection conn = DriverManager.getConnection(url,user,password);
             String sql = "SELECT * FROM employee_leave WHERE employee_id= ?";
 
             pst=conn.prepareStatement(sql);
-            pst.setString(1, id_field.getText());
+            pst.setString(1, emp_id.getText());
             rs=pst.executeQuery();
             if(rs.next()){
 
-                String firstName =rs.getString("first_name");
-                firstName_field.setText(firstName);
+                String FirstName =rs.getString("first_name");
+                firstName.setText(FirstName);
 
-                String lastName =rs.getString("last_name");
-                lastName_field.setText(lastName);
+                String LastName =rs.getString("last_name");
+                lastName.setText(LastName);
 
             }
         }
@@ -492,21 +492,21 @@ public class EmployeeAccessLeave extends javax.swing.JFrame {
         // add data to sql
         String leaveType = "";
         SimpleDateFormat dateFormat = new SimpleDateFormat("dd-MM-yyyy");
-        String fDate = dateFormat.format(SimpleDate.getDate());
+        String fDate = dateFormat.format(setDate.getDate());
 
-        DefaultTableModel model = (DefaultTableModel)leaveTable.getModel();
-        model.addRow(new Object[]{firstName_field.getText(), lastName_field.getText(), fDate,leaveTypeComboBox.getSelectedItem().toString()});
+        DefaultTableModel model = (DefaultTableModel)tableLeave.getModel();
+        model.addRow(new Object[]{firstName.getText(), lastName.getText(), fDate,leaveTypeComboBox1.getSelectedItem().toString()});
 
         try {
             Class.forName("org.postgresql.Driver");
             Connection conn = DriverManager.getConnection(url,user,password);
             pst=conn.prepareStatement("INSERT INTO employee_leave(employee_id, first_name, last_name, date, leave_type, status)values(?,?,?,?,?,?)");
 
-            pst.setString(1, id_field.getText());
-            pst.setString(2, firstName_field.getText());
-            pst.setString(3, lastName_field.getText());
+            pst.setString(1, emp_id.getText());
+            pst.setString(2, firstName.getText());
+            pst.setString(3, lastName.getText());
             pst.setString(4, fDate);
-            leaveType = leaveTypeComboBox.getSelectedItem().toString();
+            leaveType = leaveTypeComboBox1.getSelectedItem().toString();
             pst.setString(5, leaveType);
 
             pst.setString(6, "");
@@ -539,7 +539,7 @@ public class EmployeeAccessLeave extends javax.swing.JFrame {
         setVisible(false);
     }//GEN-LAST:event_backButtonActionPerformed
 
-    private void id_field1KeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_id_field1KeyReleased
+    private void emp_idKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_emp_idKeyReleased
         // SEARCH EMPLOYEE NAME
         try {
             Class.forName("org.postgresql.Driver");
@@ -547,15 +547,15 @@ public class EmployeeAccessLeave extends javax.swing.JFrame {
             String sql = "SELECT * FROM employee_leave WHERE employee_id= ?";
 
             pst=conn.prepareStatement(sql);
-            pst.setString(1, id_field.getText());
+            pst.setString(1, emp_id.getText());
             rs=pst.executeQuery();
             if(rs.next()){
 
-                String firstName =rs.getString("first_name");
-                firstName_field.setText(firstName);
+                String FirstName =rs.getString("first_name");
+                firstName.setText(FirstName);
 
-                String lastName =rs.getString("last_name");
-                lastName_field.setText(lastName);
+                String LastName =rs.getString("last_name");
+                lastName.setText(LastName);
 
             }
         }
@@ -578,31 +578,40 @@ public class EmployeeAccessLeave extends javax.swing.JFrame {
 
             }
         }
-    }//GEN-LAST:event_id_field1KeyReleased
+    }//GEN-LAST:event_emp_idKeyReleased
 
     private void leaveTypeComboBox1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_leaveTypeComboBox1ActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_leaveTypeComboBox1ActionPerformed
 
-    private void addButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_addButton1ActionPerformed
+    private void backButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_backButton1ActionPerformed
+        // TODO add your handling code here:
+        String username = "";
+
+        EmployeeAccessPortal employeeAccessPortal = new EmployeeAccessPortal (username);
+        employeeAccessPortal.setVisible(true);
+        setVisible(false);
+    }//GEN-LAST:event_backButton1ActionPerformed
+
+    private void fileLeaveActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_fileLeaveActionPerformed
         // add data to sql
         String leaveType = "";
         SimpleDateFormat dateFormat = new SimpleDateFormat("dd-MM-yyyy");
-        String fDate = dateFormat.format(SimpleDate.getDate());
+        String fDate = dateFormat.format(setDate.getDate());
 
-        DefaultTableModel model = (DefaultTableModel)leaveTable.getModel();
-        model.addRow(new Object[]{firstName_field.getText(), lastName_field.getText(), fDate,leaveTypeComboBox.getSelectedItem().toString()});
+        DefaultTableModel model = (DefaultTableModel)tableLeave.getModel();
+        model.addRow(new Object[]{firstName.getText(), lastName.getText(), fDate,leaveTypeComboBox1.getSelectedItem().toString()});
 
         try {
             Class.forName("org.postgresql.Driver");
             Connection conn = DriverManager.getConnection(url,user,password);
             pst=conn.prepareStatement("INSERT INTO employee_leave(employee_id, first_name, last_name, date, leave_type, status)values(?,?,?,?,?,?)");
 
-            pst.setString(1, id_field.getText());
-            pst.setString(2, firstName_field.getText());
-            pst.setString(3, lastName_field.getText());
+            pst.setString(1, emp_id.getText());
+            pst.setString(2, firstName.getText());
+            pst.setString(3, lastName.getText());
             pst.setString(4, fDate);
-            leaveType = leaveTypeComboBox.getSelectedItem().toString();
+            leaveType = leaveTypeComboBox1.getSelectedItem().toString();
             pst.setString(5, leaveType);
 
             pst.setString(6, "");
@@ -624,16 +633,7 @@ public class EmployeeAccessLeave extends javax.swing.JFrame {
             }
         }
 
-    }//GEN-LAST:event_addButton1ActionPerformed
-
-    private void backButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_backButton1ActionPerformed
-        // TODO add your handling code here:
-        String username = "";
-
-        EmployeeAccessPortal employeeAccessPortal = new EmployeeAccessPortal (username);
-        employeeAccessPortal.setVisible(true);
-        setVisible(false);
-    }//GEN-LAST:event_backButton1ActionPerformed
+    }//GEN-LAST:event_fileLeaveActionPerformed
 
     /**
      * @param args the command line arguments
@@ -672,9 +672,7 @@ public class EmployeeAccessLeave extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private com.toedter.calendar.JDateChooser SimpleDate;
-    private com.toedter.calendar.JDateChooser SimpleDate1;
     private javax.swing.JButton addButton;
-    private javax.swing.JButton addButton1;
     private javax.swing.JButton backButton;
     private javax.swing.JButton backButton1;
     private javax.swing.JPanel darkbluepanel;
@@ -682,19 +680,19 @@ public class EmployeeAccessLeave extends javax.swing.JFrame {
     private javax.swing.JLabel date1;
     private javax.swing.JLabel date_lbl;
     private javax.swing.JLabel date_lbl1;
+    private javax.swing.JTextField emp_id;
+    private javax.swing.JButton fileLeave;
+    private javax.swing.JTextField firstName;
     private javax.swing.JTextField firstName_field;
-    private javax.swing.JTextField firstName_field1;
     private javax.swing.JLabel greetings;
     private javax.swing.JLabel greetings1;
     private javax.swing.JTextField id_field;
-    private javax.swing.JTextField id_field1;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
+    private javax.swing.JTextField lastName;
     private javax.swing.JTextField lastName_field;
-    private javax.swing.JTextField lastName_field1;
     private javax.swing.JTable leaveTable;
-    private javax.swing.JTable leaveTable1;
     private javax.swing.JComboBox<String> leaveTypeComboBox;
     private javax.swing.JComboBox<String> leaveTypeComboBox1;
     private javax.swing.JLabel leave_title;
@@ -706,6 +704,8 @@ public class EmployeeAccessLeave extends javax.swing.JFrame {
     private javax.swing.JLabel noe_title4;
     private javax.swing.JLabel noe_title5;
     private javax.swing.JLabel noe_title6;
+    private com.toedter.calendar.JDateChooser setDate;
+    private javax.swing.JTable tableLeave;
     private javax.swing.JLabel time;
     private javax.swing.JLabel time1;
     // End of variables declaration//GEN-END:variables

@@ -19,7 +19,7 @@ public class EmployeeAccessTimeLog extends javax.swing.JFrame {
     ResultSet rs = null;
     PreparedStatement pst = null;
           
-    private static final String url = "jdbc:postgresql://localhost:8558/postgres";
+    private static final String url = "jdbc:postgresql://localhost:8558/empoyee_db";
     private static final String user = "postgres";
     private static final String password = "Burjkhalifa";
     
@@ -73,6 +73,7 @@ public class EmployeeAccessTimeLog extends javax.swing.JFrame {
         attendance_table = new javax.swing.JTable();
         darkbluePanel = new javax.swing.JPanel();
         attendance_title = new javax.swing.JLabel();
+        backButton = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -184,6 +185,15 @@ public class EmployeeAccessTimeLog extends javax.swing.JFrame {
             .addComponent(attendance_title, javax.swing.GroupLayout.DEFAULT_SIZE, 79, Short.MAX_VALUE)
         );
 
+        backButton.setBackground(new java.awt.Color(51, 0, 0));
+        backButton.setForeground(new java.awt.Color(217, 217, 217));
+        backButton.setText("Back");
+        backButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                backButtonActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
@@ -217,8 +227,13 @@ public class EmployeeAccessTimeLog extends javax.swing.JFrame {
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
                 .addContainerGap(139, Short.MAX_VALUE)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 596, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(129, 129, 129))
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 596, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(129, 129, 129))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                        .addComponent(backButton)
+                        .addGap(48, 48, 48))))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -253,7 +268,9 @@ public class EmployeeAccessTimeLog extends javax.swing.JFrame {
                         .addGap(1, 1, 1)
                         .addComponent(timeInBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addComponent(timeOutBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(59, 59, 59))
+                .addGap(17, 17, 17)
+                .addComponent(backButton)
+                .addGap(19, 19, 19))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -276,7 +293,7 @@ public class EmployeeAccessTimeLog extends javax.swing.JFrame {
         try {
             Class.forName("org.postgresql.Driver");
             Connection conn = DriverManager.getConnection(url,user,password);
-            String sql = "SELECT * FROM empoyee_db WHERE employee_id= ?";
+            String sql = "SELECT * FROM employee_attendance WHERE employee_id= ?";
 
             pst=conn.prepareStatement(sql);
             pst.setString(1, id_field.getText());
@@ -321,7 +338,7 @@ public class EmployeeAccessTimeLog extends javax.swing.JFrame {
         try {
             Class.forName("org.postgresql.Driver");
             Connection conn = DriverManager.getConnection(url,user,password);
-            pst=conn.prepareStatement("INSERT INTO employee_attendance(employee_id, first_name, last_name, date, time_in, time_out)values(?,?,?,?,?,?)");
+            pst=conn.prepareStatement("INSERT INTO employee_attendance(employee_id, first_name, last_name, date, clock_in, clock_out)values(?,?,?,?,?,?)");
 
             pst.setString(1, id_field.getText());
             pst.setString(2, firstName_field.getText());
@@ -346,7 +363,7 @@ public class EmployeeAccessTimeLog extends javax.swing.JFrame {
         try {
             Class.forName("org.postgresql.Driver");
             Connection conn = DriverManager.getConnection(url,user,password);
-            pst=conn.prepareStatement("INSERT INTO employee_attendance(employee_id, first_name, last_name, date, time_in, time_out)values(?,?,?,?,?,?)");
+            pst=conn.prepareStatement("INSERT INTO employee_attendance(employee_id, first_name, last_name, date, clock_in, clock_out)values(?,?,?,?,?,?)");
 
             pst.setString(1, id_field.getText());
             pst.setString(2, firstName_field.getText());
@@ -363,6 +380,17 @@ public class EmployeeAccessTimeLog extends javax.swing.JFrame {
         }
 
     }//GEN-LAST:event_timeOutBtnActionPerformed
+
+    private void backButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_backButtonActionPerformed
+        // back to Employee Access Portal
+        String username = "";
+
+        EmployeeAccessPortal employeeAccessPortal = new EmployeeAccessPortal (username);
+        employeeAccessPortal.setVisible(true);
+        setVisible(false);
+
+        dispose();
+    }//GEN-LAST:event_backButtonActionPerformed
 
     /**
      * @param args the command line arguments
@@ -403,6 +431,7 @@ public class EmployeeAccessTimeLog extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JTable attendance_table;
     private javax.swing.JLabel attendance_title;
+    private javax.swing.JButton backButton;
     private javax.swing.JPanel darkbluePanel;
     private javax.swing.JLabel date;
     private javax.swing.JTextField firstName_field;

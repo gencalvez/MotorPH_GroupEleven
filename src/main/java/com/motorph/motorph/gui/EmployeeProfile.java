@@ -47,29 +47,31 @@ Connection conn = null;
         en_title = new javax.swing.JLabel();
         employeeNumber_field = new javax.swing.JTextField();
         noe_title = new javax.swing.JLabel();
-        name_field = new javax.swing.JTextField();
-        name_field1 = new javax.swing.JTextField();
-        bday_field = new javax.swing.JTextField();
+        first_name = new javax.swing.JTextField();
+        last_name = new javax.swing.JTextField();
+        bday = new javax.swing.JTextField();
         b_title = new javax.swing.JLabel();
         noe_title1 = new javax.swing.JLabel();
         cn_title = new javax.swing.JLabel();
-        contact_field = new javax.swing.JTextField();
+        contact_num = new javax.swing.JTextField();
         jt_title = new javax.swing.JLabel();
         jobTitle_field = new javax.swing.JTextField();
         s_title = new javax.swing.JLabel();
-        status_field = new javax.swing.JTextField();
         govIdNum_title = new javax.swing.JLabel();
         sss_title = new javax.swing.JLabel();
         sss_field = new javax.swing.JTextField();
         pagibig_title = new javax.swing.JLabel();
         pagibig_field = new javax.swing.JTextField();
         phhealth_title = new javax.swing.JLabel();
-        phhealth_field = new javax.swing.JTextField();
+        philhealth_field = new javax.swing.JTextField();
         tin_title = new javax.swing.JLabel();
         tin_field = new javax.swing.JTextField();
         clearButton = new javax.swing.JButton();
         backButton = new javax.swing.JButton();
         updateBtn = new javax.swing.JButton();
+        status_field = new javax.swing.JTextField();
+        addRecord = new javax.swing.JButton();
+        deleteBtn = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -123,20 +125,17 @@ Connection conn = null;
         noe_title.setForeground(new java.awt.Color(0, 0, 0));
         noe_title.setText("First Name :");
 
-        name_field.setEditable(false);
-        name_field.setBackground(new java.awt.Color(153, 153, 153));
-        name_field.setFont(new java.awt.Font("Gadugi", 0, 12)); // NOI18N
-        name_field.setForeground(new java.awt.Color(29, 53, 87));
+        first_name.setBackground(new java.awt.Color(153, 153, 153));
+        first_name.setFont(new java.awt.Font("Gadugi", 0, 12)); // NOI18N
+        first_name.setForeground(new java.awt.Color(29, 53, 87));
 
-        name_field1.setEditable(false);
-        name_field1.setBackground(new java.awt.Color(153, 153, 153));
-        name_field1.setFont(new java.awt.Font("Gadugi", 0, 12)); // NOI18N
-        name_field1.setForeground(new java.awt.Color(29, 53, 87));
+        last_name.setBackground(new java.awt.Color(153, 153, 153));
+        last_name.setFont(new java.awt.Font("Gadugi", 0, 12)); // NOI18N
+        last_name.setForeground(new java.awt.Color(29, 53, 87));
 
-        bday_field.setEditable(false);
-        bday_field.setBackground(new java.awt.Color(153, 153, 153));
-        bday_field.setFont(new java.awt.Font("Gadugi", 0, 12)); // NOI18N
-        bday_field.setForeground(new java.awt.Color(29, 53, 87));
+        bday.setBackground(new java.awt.Color(153, 153, 153));
+        bday.setFont(new java.awt.Font("Gadugi", 0, 12)); // NOI18N
+        bday.setForeground(new java.awt.Color(29, 53, 87));
 
         b_title.setFont(new java.awt.Font("Gadugi", 1, 12)); // NOI18N
         b_title.setForeground(new java.awt.Color(0, 0, 0));
@@ -150,15 +149,14 @@ Connection conn = null;
         cn_title.setForeground(new java.awt.Color(0, 0, 0));
         cn_title.setText("Contact Number:");
 
-        contact_field.setBackground(new java.awt.Color(153, 153, 153));
-        contact_field.setFont(new java.awt.Font("Gadugi", 0, 12)); // NOI18N
-        contact_field.setForeground(new java.awt.Color(29, 53, 87));
+        contact_num.setBackground(new java.awt.Color(153, 153, 153));
+        contact_num.setFont(new java.awt.Font("Gadugi", 0, 12)); // NOI18N
+        contact_num.setForeground(new java.awt.Color(29, 53, 87));
 
         jt_title.setFont(new java.awt.Font("Gadugi", 1, 12)); // NOI18N
         jt_title.setForeground(new java.awt.Color(0, 0, 0));
         jt_title.setText("Job Title :");
 
-        jobTitle_field.setEditable(false);
         jobTitle_field.setBackground(new java.awt.Color(153, 153, 153));
         jobTitle_field.setFont(new java.awt.Font("Gadugi", 0, 12)); // NOI18N
         jobTitle_field.setForeground(new java.awt.Color(29, 53, 87));
@@ -166,11 +164,6 @@ Connection conn = null;
         s_title.setFont(new java.awt.Font("Gadugi", 1, 12)); // NOI18N
         s_title.setForeground(new java.awt.Color(0, 0, 0));
         s_title.setText("Status :");
-
-        status_field.setEditable(false);
-        status_field.setBackground(new java.awt.Color(217, 217, 217));
-        status_field.setFont(new java.awt.Font("Gadugi", 0, 12)); // NOI18N
-        status_field.setForeground(new java.awt.Color(29, 53, 87));
 
         govIdNum_title.setFont(new java.awt.Font("Gadugi", 2, 12)); // NOI18N
         govIdNum_title.setForeground(new java.awt.Color(0, 0, 0));
@@ -180,7 +173,6 @@ Connection conn = null;
         sss_title.setForeground(new java.awt.Color(0, 0, 0));
         sss_title.setText("SSS Number :");
 
-        sss_field.setEditable(false);
         sss_field.setBackground(new java.awt.Color(153, 153, 153));
         sss_field.setFont(new java.awt.Font("Gadugi", 0, 12)); // NOI18N
         sss_field.setForeground(new java.awt.Color(29, 53, 87));
@@ -189,7 +181,6 @@ Connection conn = null;
         pagibig_title.setForeground(new java.awt.Color(0, 0, 0));
         pagibig_title.setText("PAG-IBIG Number :");
 
-        pagibig_field.setEditable(false);
         pagibig_field.setBackground(new java.awt.Color(153, 153, 153));
         pagibig_field.setFont(new java.awt.Font("Gadugi", 0, 12)); // NOI18N
         pagibig_field.setForeground(new java.awt.Color(29, 53, 87));
@@ -198,16 +189,14 @@ Connection conn = null;
         phhealth_title.setForeground(new java.awt.Color(0, 0, 0));
         phhealth_title.setText("PhilHealth Number :");
 
-        phhealth_field.setEditable(false);
-        phhealth_field.setBackground(new java.awt.Color(153, 153, 153));
-        phhealth_field.setFont(new java.awt.Font("Gadugi", 0, 12)); // NOI18N
-        phhealth_field.setForeground(new java.awt.Color(29, 53, 87));
+        philhealth_field.setBackground(new java.awt.Color(153, 153, 153));
+        philhealth_field.setFont(new java.awt.Font("Gadugi", 0, 12)); // NOI18N
+        philhealth_field.setForeground(new java.awt.Color(29, 53, 87));
 
         tin_title.setFont(new java.awt.Font("Gadugi", 1, 12)); // NOI18N
         tin_title.setForeground(new java.awt.Color(0, 0, 0));
         tin_title.setText("TIN :");
 
-        tin_field.setEditable(false);
         tin_field.setBackground(new java.awt.Color(153, 153, 153));
         tin_field.setFont(new java.awt.Font("Gadugi", 0, 12)); // NOI18N
         tin_field.setForeground(new java.awt.Color(29, 53, 87));
@@ -241,77 +230,100 @@ Connection conn = null;
             }
         });
 
+        status_field.setBackground(new java.awt.Color(255, 255, 255));
+        status_field.setFont(new java.awt.Font("Gadugi", 0, 12)); // NOI18N
+        status_field.setForeground(new java.awt.Color(29, 53, 87));
+
+        addRecord.setBackground(new java.awt.Color(51, 0, 0));
+        addRecord.setForeground(new java.awt.Color(255, 255, 255));
+        addRecord.setText("Add Record");
+        addRecord.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                addRecordActionPerformed(evt);
+            }
+        });
+
+        deleteBtn.setBackground(new java.awt.Color(51, 0, 0));
+        deleteBtn.setForeground(new java.awt.Color(255, 255, 255));
+        deleteBtn.setText("Delete");
+        deleteBtn.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                deleteBtnActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout jPanel4Layout = new javax.swing.GroupLayout(jPanel4);
         jPanel4.setLayout(jPanel4Layout);
         jPanel4Layout.setHorizontalGroup(
             jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addComponent(jPanel3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel4Layout.createSequentialGroup()
-                .addGap(36, 36, 36)
-                .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(greetings)
-                    .addComponent(dateAndTime))
-                .addGap(0, 0, Short.MAX_VALUE))
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel4Layout.createSequentialGroup()
-                .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel4Layout.createSequentialGroup()
-                        .addGap(50, 50, 50)
+                .addGap(50, 50, 50)
+                .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addGroup(jPanel4Layout.createSequentialGroup()
                         .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addGroup(jPanel4Layout.createSequentialGroup()
-                                .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                    .addComponent(tin_title)
-                                    .addComponent(phhealth_title)
-                                    .addComponent(pagibig_title)
-                                    .addComponent(govIdNum_title)
-                                    .addComponent(sss_title))
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(pagibig_field)
-                                    .addComponent(phhealth_field)
-                                    .addComponent(tin_field)
-                                    .addComponent(sss_field)))
-                            .addGroup(jPanel4Layout.createSequentialGroup()
-                                .addGap(0, 0, Short.MAX_VALUE)
-                                .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                    .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                        .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel4Layout.createSequentialGroup()
-                                            .addComponent(noe_title)
-                                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                            .addComponent(name_field, javax.swing.GroupLayout.PREFERRED_SIZE, 184, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                        .addGroup(jPanel4Layout.createSequentialGroup()
-                                            .addComponent(en_title)
-                                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                            .addComponent(employeeNumber_field, javax.swing.GroupLayout.PREFERRED_SIZE, 184, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                                    .addGroup(jPanel4Layout.createSequentialGroup()
-                                        .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                            .addComponent(noe_title1)
-                                            .addComponent(b_title))
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                        .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                            .addComponent(bday_field, javax.swing.GroupLayout.Alignment.TRAILING)
-                                            .addComponent(name_field1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 184, javax.swing.GroupLayout.PREFERRED_SIZE))))))
-                        .addGap(18, 18, 18)
+                            .addComponent(tin_title)
+                            .addComponent(phhealth_title)
+                            .addComponent(pagibig_title)
+                            .addComponent(govIdNum_title)
+                            .addComponent(sss_title))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(pagibig_field)
+                            .addComponent(philhealth_field)
+                            .addComponent(tin_field)
+                            .addComponent(sss_field)))
+                    .addGroup(jPanel4Layout.createSequentialGroup()
+                        .addGap(0, 0, Short.MAX_VALUE)
+                        .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel4Layout.createSequentialGroup()
+                                    .addComponent(noe_title)
+                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                    .addComponent(first_name, javax.swing.GroupLayout.PREFERRED_SIZE, 184, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addGroup(jPanel4Layout.createSequentialGroup()
+                                    .addComponent(en_title)
+                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                    .addComponent(employeeNumber_field, javax.swing.GroupLayout.PREFERRED_SIZE, 184, javax.swing.GroupLayout.PREFERRED_SIZE)))
                             .addGroup(jPanel4Layout.createSequentialGroup()
-                                .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(jt_title, javax.swing.GroupLayout.Alignment.TRAILING)
-                                    .addComponent(s_title, javax.swing.GroupLayout.Alignment.TRAILING)
-                                    .addComponent(cn_title, javax.swing.GroupLayout.Alignment.TRAILING))
+                                .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                    .addComponent(noe_title1)
+                                    .addComponent(b_title))
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                    .addComponent(contact_field)
-                                    .addComponent(jobTitle_field)
-                                    .addComponent(status_field, javax.swing.GroupLayout.PREFERRED_SIZE, 171, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                .addGap(64, 64, 64))
-                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel4Layout.createSequentialGroup()
-                                .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                                    .addComponent(updateBtn, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                    .addComponent(clearButton))
-                                .addGap(92, 92, 92))))
+                                    .addComponent(bday, javax.swing.GroupLayout.Alignment.TRAILING)
+                                    .addComponent(last_name, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 184, javax.swing.GroupLayout.PREFERRED_SIZE))))))
+                .addGap(18, 18, 18)
+                .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel4Layout.createSequentialGroup()
+                        .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jt_title, javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(s_title, javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(cn_title, javax.swing.GroupLayout.Alignment.TRAILING))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                .addComponent(contact_num, javax.swing.GroupLayout.DEFAULT_SIZE, 171, Short.MAX_VALUE)
+                                .addComponent(jobTitle_field))
+                            .addComponent(status_field, javax.swing.GroupLayout.PREFERRED_SIZE, 171, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(87, 87, 87))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel4Layout.createSequentialGroup()
-                        .addGap(0, 0, Short.MAX_VALUE)
-                        .addComponent(backButton)))
-                .addGap(23, 23, 23))
+                        .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                            .addComponent(updateBtn, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(addRecord, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(clearButton, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(deleteBtn, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                        .addGap(141, 141, 141))))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel4Layout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(backButton)
+                .addGap(39, 39, 39))
+            .addGroup(jPanel4Layout.createSequentialGroup()
+                .addGap(25, 25, 25)
+                .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(dateAndTime)
+                    .addComponent(greetings))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jPanel4Layout.setVerticalGroup(
             jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -326,13 +338,13 @@ Connection conn = null;
                     .addGroup(jPanel4Layout.createSequentialGroup()
                         .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(cn_title)
-                            .addComponent(contact_field, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(contact_num, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(jt_title)
                             .addComponent(jobTitle_field, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(s_title)
                             .addComponent(status_field, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
                     .addGroup(jPanel4Layout.createSequentialGroup()
@@ -341,43 +353,47 @@ Connection conn = null;
                             .addComponent(employeeNumber_field, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(name_field, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(first_name, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(noe_title))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(name_field1)
-                            .addComponent(noe_title1))
+                        .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(noe_title1)
+                            .addComponent(last_name, javax.swing.GroupLayout.PREFERRED_SIZE, 22, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(b_title)
-                            .addComponent(bday_field, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                            .addComponent(bday, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))
                 .addGap(30, 30, 30)
                 .addComponent(govIdNum_title)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(sss_title)
-                    .addComponent(sss_field, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(pagibig_title)
-                    .addComponent(pagibig_field, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel4Layout.createSequentialGroup()
                         .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(sss_title)
+                            .addComponent(sss_field, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(pagibig_title)
+                            .addComponent(pagibig_field, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(8, 8, 8)
+                        .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(phhealth_title)
-                            .addComponent(phhealth_field, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(philhealth_field, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(tin_title)
                             .addComponent(tin_field, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
                     .addGroup(jPanel4Layout.createSequentialGroup()
+                        .addComponent(addRecord)
+                        .addGap(7, 7, 7)
                         .addComponent(updateBtn)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(clearButton)))
-                .addGap(38, 38, 38)
+                        .addComponent(clearButton)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(deleteBtn)))
+                .addGap(28, 28, 28)
                 .addComponent(backButton)
-                .addGap(24, 24, 24))
+                .addGap(30, 30, 30))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -406,28 +422,28 @@ Connection conn = null;
 
         // Clear data from textbox
         employeeNumber_field.setText("");
-        name_field.setText("");
-        name_field1.setText("");
-        bday_field.setText("");
-        contact_field.setText("");
+        first_name.setText("");
+        last_name.setText("");
+        bday.setText("");
+        contact_num.setText("");
         status_field.setText("");
         jobTitle_field.setText("");
         sss_field.setText("");
-        phhealth_field.setText("");
+        philhealth_field.setText("");
         pagibig_field.setText("");
         tin_field.setText("");
     }//GEN-LAST:event_clearButtonActionPerformed
 
     private void employeeNumber_fieldKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_employeeNumber_fieldKeyReleased
         // type employee number
-        String url = "jdbc:postgresql://localhost:8558/empoyee_db";
+       String url = "jdbc:postgresql://localhost:8558/empoyee_db";
         String user = "postgres";
         String password = "Burjkhalifa";
 
         try {
             Class.forName("org.postgresql.Driver");
             Connection conn = DriverManager.getConnection(url,user,password);
-            String sql = "SELECT * FROM employee_data WHERE employee_id= ?";
+            String sql = "SELECT * FROM employee_data1 WHERE employee_id= ?";
 
             pst=conn.prepareStatement(sql);
             pst.setString(1, employeeNumber_field.getText());
@@ -435,16 +451,16 @@ Connection conn = null;
             if(rs.next()){
 
                 String firstName =rs.getString("first_name");
-                name_field.setText(firstName);
+                first_name.setText(firstName);
 
                 String lastName =rs.getString("last_name");
-                name_field1.setText(lastName);
+                last_name.setText(lastName);
 
-                String bday =rs.getString("birthday");
-                bday_field.setText(bday);
+                String birthday =rs.getString("birthday");
+                bday.setText(birthday);
 
                 String contactNumber =rs.getString("phone_number");
-                contact_field.setText(contactNumber);
+                contact_num.setText(contactNumber);
 
                 String status =rs.getString("status");
                 status_field.setText(status);
@@ -452,16 +468,16 @@ Connection conn = null;
                 String position =rs.getString("position");
                 jobTitle_field.setText(position);
 
-                String sss =rs.getString("sss");
+                String sss =rs.getString("sss_num");
                 sss_field.setText(sss);
 
-                String philhealth =rs.getString("philhealth");
-                phhealth_field.setText(philhealth);
+                String philhealth =rs.getString("philhealth_num");
+                philhealth_field.setText(philhealth);
 
-                String pagibig =rs.getString("pagibig");
+                String pagibig =rs.getString("pagibig_num");
                 pagibig_field.setText(pagibig);
 
-                String tin =rs.getString("tin");
+                String tin =rs.getString("tin_num");
                 tin_field.setText(tin);
 
             }
@@ -491,8 +507,8 @@ Connection conn = null;
         // Update Information from SQL
 
         try {
-            String lastName = name_field1.getText();
-            String phoneNumber = contact_field.getText();
+            String lastName = last_name.getText();
+            String phoneNumber = contact_num.getText();
             String position = jobTitle_field.getText();
             String status = status_field.getText();
 
@@ -511,9 +527,92 @@ Connection conn = null;
         }
     }//GEN-LAST:event_updateBtnActionPerformed
 
-    /**
-     * @param args the command line arguments
-     */
+    private void addRecordActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_addRecordActionPerformed
+        // Adding New Employee
+        try {
+            String firstName = first_name.getText();
+            String lastName = last_name.getText();
+            String birthday = bday.getText();
+            String phoneNumber = contact_num.getText();
+            String position = jobTitle_field.getText();
+            String sss = sss_field.getText();
+            String pagIbig = pagibig_field.getText();
+            String philHealth = philhealth_field.getText();
+            String tin = tin_field.getText();
+            String status = status_field.getText();
+            String employeeID = employeeNumber_field.getText();
+
+            Class.forName("org.postgresql.Driver");
+            Connection conn = DriverManager.getConnection(url, user, password);
+
+            String query = "INSERT INTO employee_data1 (employee_id, first_name, last_name, birthday, phone_number, position, status, sss_num, pagibig_num, philhealth_num, tin_num) "
+            + "VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
+
+            pst = conn.prepareStatement(query);
+            pst.setString(1, employeeID);
+            pst.setString(2, firstName);
+            pst.setString(3, lastName);
+            pst.setString(4, birthday);
+            pst.setString(5, phoneNumber);
+            pst.setString(6, position);
+            pst.setString(7, status);
+            pst.setString(8, sss);
+            pst.setString(9, pagIbig);
+            pst.setString(10, philHealth);
+            pst.setString(11, tin);
+
+            pst.executeUpdate();
+
+            JOptionPane.showMessageDialog(this, "Successfully Added!");
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(this, e.getMessage());
+        }
+    }//GEN-LAST:event_addRecordActionPerformed
+
+    private void deleteBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_deleteBtnActionPerformed
+        // Deleting data
+        try {
+            String firstName = first_name.getText();
+            String lastName = last_name.getText();
+            String birthday = bday.getText();
+            String phoneNumber = contact_num.getText();
+            String position = jobTitle_field.getText();
+            String sss = sss_field.getText();
+            String pagIbig = pagibig_field.getText();
+            String philHealth = philhealth_field.getText();
+            String tin = tin_field.getText();
+            String status = status_field.getText();
+            String employeeID = employeeNumber_field.getText();
+
+            int result = JOptionPane.showConfirmDialog(null, "Are you sure you want to delete?", "Employee Profile", JOptionPane.YES_NO_OPTION);
+
+            if (result == JOptionPane.YES_OPTION) {
+                Class.forName("org.postgresql.Driver");
+                Connection conn = DriverManager.getConnection(url, user, password);
+
+                String query = "DELETE FROM employee_data1 WHERE employee_id = ?";
+
+                pst = conn.prepareStatement(query);
+                pst.setString(1, employeeID);
+
+                int rowsAffected = pst.executeUpdate();
+
+                if (rowsAffected > 0) {
+                    JOptionPane.showMessageDialog(this, "Successfully Deleted!");
+                } else {
+                    JOptionPane.showMessageDialog(this, "No employee found with the provided ID.");
+                }
+
+                pst.close();
+                conn.close();
+            } else {
+                JOptionPane.showMessageDialog(this, "Deletion cancelled.");
+            }
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(this, e.getMessage());
+        }
+    }//GEN-LAST:event_deleteBtnActionPerformed
+
     public static void main(String args[]) {
         /* Set the Nimbus look and feel */
         //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
@@ -548,30 +647,32 @@ Connection conn = null;
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton addRecord;
     private javax.swing.JLabel b_title;
     private javax.swing.JButton backButton;
-    private javax.swing.JTextField bday_field;
+    private javax.swing.JTextField bday;
     private javax.swing.JButton clearButton;
     private javax.swing.JLabel cn_title;
-    private javax.swing.JTextField contact_field;
+    private javax.swing.JTextField contact_num;
     private javax.swing.JLabel dateAndTime;
+    private javax.swing.JButton deleteBtn;
     private javax.swing.JTextField employeeNumber_field;
     private javax.swing.JLabel empportal_label1;
     private javax.swing.JLabel en_title;
+    private javax.swing.JTextField first_name;
     private javax.swing.JLabel govIdNum_title;
     private javax.swing.JLabel greetings;
     private javax.swing.JPanel jPanel3;
     private javax.swing.JPanel jPanel4;
     private javax.swing.JTextField jobTitle_field;
     private javax.swing.JLabel jt_title;
-    private javax.swing.JTextField name_field;
-    private javax.swing.JTextField name_field1;
+    private javax.swing.JTextField last_name;
     private javax.swing.JLabel noe_title;
     private javax.swing.JLabel noe_title1;
     private javax.swing.JTextField pagibig_field;
     private javax.swing.JLabel pagibig_title;
-    private javax.swing.JTextField phhealth_field;
     private javax.swing.JLabel phhealth_title;
+    private javax.swing.JTextField philhealth_field;
     private javax.swing.JLabel s_title;
     private javax.swing.JTextField sss_field;
     private javax.swing.JLabel sss_title;

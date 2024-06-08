@@ -1,6 +1,6 @@
 package com.motorph_group3;
 
-import com.motorph.motorph.gui.LoginPage;
+import com.motorph.motorph.gui.Login;
 import com.motorph_util.Postgresql;
 import java.sql.Connection;
 import javax.swing.JFrame;
@@ -12,7 +12,7 @@ public class MainClass extends JFrame {
     public static void main(String[] args) {
         Connection conn=null;
         
-        LoginPage loginFrame = new LoginPage();
+        Login loginFrame = new Login();
         loginFrame.setVisible(true);
         
         conn = Postgresql.java_db();
