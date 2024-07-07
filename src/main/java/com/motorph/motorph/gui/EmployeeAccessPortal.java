@@ -13,7 +13,7 @@ import java.sql.DriverManager;
 import javax.swing.*;
 
 public class EmployeeAccessPortal extends javax.swing.JFrame {
-
+    
     Connection conn = null;
     ResultSet rs = null;
     PreparedStatement pst = null;
@@ -22,7 +22,7 @@ public class EmployeeAccessPortal extends javax.swing.JFrame {
     String user = "postgres";
     String password = "Burjkhalifa";
     
-    public EmployeeAccessPortal(String dUsername) {
+    public EmployeeAccessPortal(String Username) {
         initComponents();
         setTitle ("Employee Portal");
         setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
@@ -30,7 +30,7 @@ public class EmployeeAccessPortal extends javax.swing.JFrame {
         Toolkit toolkit=getToolkit();
         Dimension size=toolkit.getScreenSize();
         setLocation(size.width/2-getWidth()/2,size.height/2-getHeight()/2);
-        
+        this.setResizable(false);
         
         conn = Postgresql.java_db();
         
@@ -39,7 +39,12 @@ public class EmployeeAccessPortal extends javax.swing.JFrame {
         date();
               
     }
-
+    
+     public void username(String username) {
+        userName.setText("Welcome" + username);   
+    }
+     
+     
     public final void time(){
     DateTimeFormatter times = DateTimeFormatter.ofPattern("hh:mm:ss a");
     LocalDateTime now =LocalDateTime.now();
@@ -63,17 +68,17 @@ public class EmployeeAccessPortal extends javax.swing.JFrame {
         logOutButton = new javax.swing.JButton();
         time = new javax.swing.JLabel();
         date = new javax.swing.JLabel();
-        greetings = new javax.swing.JLabel();
         leaveManagement = new javax.swing.JButton();
         employeeProfileButton = new javax.swing.JButton();
+        userName = new java.awt.Label();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
-        jPanel1.setBackground(new java.awt.Color(153, 153, 153));
+        jPanel1.setBackground(new java.awt.Color(204, 204, 204));
 
         jPanel3.setBackground(new java.awt.Color(51, 0, 0));
 
-        jLabel1.setFont(new java.awt.Font("Gadugi", 0, 30)); // NOI18N
+        jLabel1.setFont(new java.awt.Font("Cambria", 0, 30)); // NOI18N
         jLabel1.setForeground(new java.awt.Color(217, 217, 217));
         jLabel1.setText("Employee Portal");
 
@@ -82,9 +87,9 @@ public class EmployeeAccessPortal extends javax.swing.JFrame {
         jPanel3Layout.setHorizontalGroup(
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel3Layout.createSequentialGroup()
-                .addGap(20, 20, 20)
+                .addGap(19, 19, 19)
                 .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 230, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(502, Short.MAX_VALUE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jPanel3Layout.setVerticalGroup(
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -92,7 +97,7 @@ public class EmployeeAccessPortal extends javax.swing.JFrame {
         );
 
         timeLog.setBackground(new java.awt.Color(51, 0, 0));
-        timeLog.setFont(new java.awt.Font("Gadugi", 0, 14)); // NOI18N
+        timeLog.setFont(new java.awt.Font("Cambria", 0, 18)); // NOI18N
         timeLog.setForeground(new java.awt.Color(217, 217, 217));
         timeLog.setText("Time Log");
         timeLog.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
@@ -121,13 +126,8 @@ public class EmployeeAccessPortal extends javax.swing.JFrame {
         date.setForeground(new java.awt.Color(0, 0, 0));
         date.setText("Date ");
 
-        greetings.setBackground(new java.awt.Color(255, 255, 255));
-        greetings.setFont(new java.awt.Font("Gadugi", 0, 14)); // NOI18N
-        greetings.setForeground(new java.awt.Color(0, 0, 0));
-        greetings.setText("Good day!");
-
         leaveManagement.setBackground(new java.awt.Color(51, 0, 0));
-        leaveManagement.setFont(new java.awt.Font("Gadugi", 0, 14)); // NOI18N
+        leaveManagement.setFont(new java.awt.Font("Cambria", 0, 18)); // NOI18N
         leaveManagement.setForeground(new java.awt.Color(217, 217, 217));
         leaveManagement.setText("Leave Management");
         leaveManagement.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
@@ -138,7 +138,7 @@ public class EmployeeAccessPortal extends javax.swing.JFrame {
         });
 
         employeeProfileButton.setBackground(new java.awt.Color(51, 0, 0));
-        employeeProfileButton.setFont(new java.awt.Font("Gadugi", 0, 14)); // NOI18N
+        employeeProfileButton.setFont(new java.awt.Font("Cambria", 0, 18)); // NOI18N
         employeeProfileButton.setForeground(new java.awt.Color(217, 217, 217));
         employeeProfileButton.setText("Employee Profile");
         employeeProfileButton.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
@@ -148,27 +148,16 @@ public class EmployeeAccessPortal extends javax.swing.JFrame {
             }
         });
 
+        userName.setFont(new java.awt.Font("Gadugi", 0, 18)); // NOI18N
+        userName.setName(""); // NOI18N
+
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addComponent(jPanel3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-            .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(44, 44, 44)
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(greetings)
-                            .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addComponent(date)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(time))))
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(256, 256, 256)
-                        .addComponent(leaveManagement, javax.swing.GroupLayout.PREFERRED_SIZE, 218, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                .addGap(0, 0, Short.MAX_VALUE)
+                .addGap(0, 143, Short.MAX_VALUE)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
                         .addComponent(employeeProfileButton, javax.swing.GroupLayout.PREFERRED_SIZE, 218, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -178,24 +167,39 @@ public class EmployeeAccessPortal extends javax.swing.JFrame {
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
                         .addComponent(logOutButton)
                         .addGap(49, 49, 49))))
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addGap(33, 33, 33)
+                .addComponent(userName, javax.swing.GroupLayout.PREFERRED_SIZE, 155, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(date)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(time)
+                .addGap(72, 72, 72))
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addGap(255, 255, 255)
+                .addComponent(leaveManagement, javax.swing.GroupLayout.PREFERRED_SIZE, 218, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
-                .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
-                .addComponent(greetings)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(date)
-                    .addComponent(time))
-                .addGap(58, 58, 58)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(userName, javax.swing.GroupLayout.PREFERRED_SIZE, 76, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGap(106, 106, 106)
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(date)
+                            .addComponent(time))))
+                .addGap(44, 44, 44)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(timeLog, javax.swing.GroupLayout.PREFERRED_SIZE, 83, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(employeeProfileButton, javax.swing.GroupLayout.PREFERRED_SIZE, 83, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addComponent(leaveManagement, javax.swing.GroupLayout.PREFERRED_SIZE, 83, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 54, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 46, Short.MAX_VALUE)
                 .addComponent(logOutButton)
                 .addGap(26, 26, 26))
         );
@@ -297,7 +301,6 @@ public class EmployeeAccessPortal extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel date;
     private javax.swing.JButton employeeProfileButton;
-    private javax.swing.JLabel greetings;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel3;
@@ -305,5 +308,6 @@ public class EmployeeAccessPortal extends javax.swing.JFrame {
     private javax.swing.JButton logOutButton;
     private javax.swing.JLabel time;
     private javax.swing.JButton timeLog;
+    public java.awt.Label userName;
     // End of variables declaration//GEN-END:variables
 }

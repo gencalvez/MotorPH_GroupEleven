@@ -4,19 +4,22 @@ package com.motorph.motorph.gui;
 import com.motorph_util.Postgresql;
 import java.awt.Dimension;
 import java.awt.Toolkit;
+import java.awt.print.PrinterException;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.ResultSetMetaData;
 import java.text.DecimalFormat;
+import java.text.MessageFormat;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 import java.util.Vector;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.WindowConstants;
 import javax.swing.JOptionPane;
-import javax.swing.table.DefaultTableModel;
-//import javax.swing.*;
+import javax.swing.*;
 
 public class EmployeePayroll extends javax.swing.JFrame {
     
@@ -53,9 +56,11 @@ public class EmployeePayroll extends javax.swing.JFrame {
         //setSize(700, 850);
         setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
         setVisible(true);
+        setSize(1250, 750);
         Toolkit toolkit=getToolkit();
         Dimension size=toolkit.getScreenSize();
         setLocation(size.width/2-getWidth()/2,size.height/2-getHeight()/2);
+        this.setResizable(false);     
         
         conn = Postgresql.java_db();
         
@@ -141,10 +146,12 @@ public class EmployeePayroll extends javax.swing.JFrame {
         backButton = new javax.swing.JButton();
         ComboBox = new javax.swing.JComboBox<>();
         payperiod_lbl = new javax.swing.JLabel();
+        printBtn = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
-        jPanel1.setBackground(new java.awt.Color(153, 153, 153));
+        jPanel1.setBackground(new java.awt.Color(204, 204, 204));
+        jPanel1.setForeground(new java.awt.Color(0, 0, 0));
         jPanel1.setPreferredSize(new java.awt.Dimension(968, 660));
 
         jPanel2.setBackground(new java.awt.Color(51, 0, 0));
@@ -193,7 +200,7 @@ public class EmployeePayroll extends javax.swing.JFrame {
 
         employeeid_field.setBackground(new java.awt.Color(217, 217, 217));
         employeeid_field.setFont(new java.awt.Font("Gadugi", 0, 12)); // NOI18N
-        employeeid_field.setForeground(new java.awt.Color(29, 53, 87));
+        employeeid_field.setForeground(new java.awt.Color(0, 0, 0));
         employeeid_field.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyReleased(java.awt.event.KeyEvent evt) {
                 employeeid_fieldKeyReleased(evt);
@@ -201,18 +208,18 @@ public class EmployeePayroll extends javax.swing.JFrame {
         });
 
         ename_field.setEditable(false);
-        ename_field.setBackground(new java.awt.Color(217, 217, 217));
+        ename_field.setBackground(new java.awt.Color(153, 153, 153));
         ename_field.setFont(new java.awt.Font("Gadugi", 0, 12)); // NOI18N
-        ename_field.setForeground(new java.awt.Color(29, 53, 87));
+        ename_field.setForeground(new java.awt.Color(0, 0, 0));
 
         ename_field1.setEditable(false);
-        ename_field1.setBackground(new java.awt.Color(217, 217, 217));
+        ename_field1.setBackground(new java.awt.Color(153, 153, 153));
         ename_field1.setFont(new java.awt.Font("Gadugi", 0, 12)); // NOI18N
-        ename_field1.setForeground(new java.awt.Color(29, 53, 87));
+        ename_field1.setForeground(new java.awt.Color(0, 0, 0));
 
         clearButton1.setBackground(new java.awt.Color(51, 0, 0));
         clearButton1.setFont(new java.awt.Font("Gadugi", 0, 12)); // NOI18N
-        clearButton1.setForeground(new java.awt.Color(217, 217, 217));
+        clearButton1.setForeground(new java.awt.Color(255, 255, 255));
         clearButton1.setText("Clear");
         clearButton1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -221,9 +228,9 @@ public class EmployeePayroll extends javax.swing.JFrame {
         });
 
         hourlyRate_field.setEditable(false);
-        hourlyRate_field.setBackground(new java.awt.Color(217, 217, 217));
+        hourlyRate_field.setBackground(new java.awt.Color(153, 153, 153));
         hourlyRate_field.setFont(new java.awt.Font("Gadugi", 0, 12)); // NOI18N
-        hourlyRate_field.setForeground(new java.awt.Color(29, 53, 87));
+        hourlyRate_field.setForeground(new java.awt.Color(0, 0, 0));
 
         hr_label.setFont(new java.awt.Font("Gadugi", 1, 12)); // NOI18N
         hr_label.setForeground(new java.awt.Color(0, 0, 0));
@@ -234,95 +241,95 @@ public class EmployeePayroll extends javax.swing.JFrame {
         riceA_label.setText("Rice Subsidy:");
 
         riceA_field.setEditable(false);
-        riceA_field.setBackground(new java.awt.Color(217, 217, 217));
+        riceA_field.setBackground(new java.awt.Color(153, 153, 153));
         riceA_field.setFont(new java.awt.Font("Gadugi", 0, 12)); // NOI18N
-        riceA_field.setForeground(new java.awt.Color(29, 53, 87));
+        riceA_field.setForeground(new java.awt.Color(0, 0, 0));
 
         phoneA_label.setFont(new java.awt.Font("Gadugi", 1, 12)); // NOI18N
         phoneA_label.setForeground(new java.awt.Color(0, 0, 0));
         phoneA_label.setText("Phone Allowance:");
 
         phoneA_field.setEditable(false);
-        phoneA_field.setBackground(new java.awt.Color(217, 217, 217));
+        phoneA_field.setBackground(new java.awt.Color(153, 153, 153));
         phoneA_field.setFont(new java.awt.Font("Gadugi", 0, 12)); // NOI18N
-        phoneA_field.setForeground(new java.awt.Color(29, 53, 87));
+        phoneA_field.setForeground(new java.awt.Color(0, 0, 0));
 
         clothingA_label.setFont(new java.awt.Font("Gadugi", 1, 12)); // NOI18N
         clothingA_label.setForeground(new java.awt.Color(0, 0, 0));
         clothingA_label.setText("Clothing Allowance:");
 
         clothing_field.setEditable(false);
-        clothing_field.setBackground(new java.awt.Color(217, 217, 217));
+        clothing_field.setBackground(new java.awt.Color(153, 153, 153));
         clothing_field.setFont(new java.awt.Font("Gadugi", 0, 12)); // NOI18N
-        clothing_field.setForeground(new java.awt.Color(29, 53, 87));
+        clothing_field.setForeground(new java.awt.Color(0, 0, 0));
 
         hoursWorked_lb.setFont(new java.awt.Font("Gadugi", 1, 12)); // NOI18N
         hoursWorked_lb.setForeground(new java.awt.Color(0, 0, 0));
         hoursWorked_lb.setText("Numbers of hours worked:");
 
-        hoursWorked_field.setBackground(new java.awt.Color(217, 217, 217));
+        hoursWorked_field.setBackground(new java.awt.Color(153, 153, 153));
         hoursWorked_field.setFont(new java.awt.Font("Gadugi", 0, 12)); // NOI18N
-        hoursWorked_field.setForeground(new java.awt.Color(29, 53, 87));
+        hoursWorked_field.setForeground(new java.awt.Color(0, 0, 0));
 
         sss_label.setFont(new java.awt.Font("Gadugi", 1, 12)); // NOI18N
         sss_label.setForeground(new java.awt.Color(0, 0, 0));
         sss_label.setText("SSS Contribution:");
 
         sss_field.setEditable(false);
-        sss_field.setBackground(new java.awt.Color(217, 217, 217));
+        sss_field.setBackground(new java.awt.Color(153, 153, 153));
         sss_field.setFont(new java.awt.Font("Gadugi", 0, 12)); // NOI18N
-        sss_field.setForeground(new java.awt.Color(29, 53, 87));
+        sss_field.setForeground(new java.awt.Color(0, 0, 0));
 
         pHealth_label.setFont(new java.awt.Font("Gadugi", 1, 12)); // NOI18N
         pHealth_label.setForeground(new java.awt.Color(0, 0, 0));
         pHealth_label.setText("PhilHealth Contribution:");
 
         pHealth_field.setEditable(false);
-        pHealth_field.setBackground(new java.awt.Color(217, 217, 217));
+        pHealth_field.setBackground(new java.awt.Color(153, 153, 153));
         pHealth_field.setFont(new java.awt.Font("Gadugi", 0, 12)); // NOI18N
-        pHealth_field.setForeground(new java.awt.Color(29, 53, 87));
+        pHealth_field.setForeground(new java.awt.Color(0, 0, 0));
 
         pagibig_label.setFont(new java.awt.Font("Gadugi", 1, 12)); // NOI18N
         pagibig_label.setForeground(new java.awt.Color(0, 0, 0));
         pagibig_label.setText("Pag-ibig Contribution:");
 
         pagibig_field.setEditable(false);
-        pagibig_field.setBackground(new java.awt.Color(217, 217, 217));
+        pagibig_field.setBackground(new java.awt.Color(153, 153, 153));
         pagibig_field.setFont(new java.awt.Font("Gadugi", 0, 12)); // NOI18N
-        pagibig_field.setForeground(new java.awt.Color(29, 53, 87));
+        pagibig_field.setForeground(new java.awt.Color(0, 0, 0));
 
         td_label.setFont(new java.awt.Font("Gadugi", 1, 12)); // NOI18N
         td_label.setForeground(new java.awt.Color(0, 0, 0));
         td_label.setText("Total Deductions:");
 
         totalD_field.setEditable(false);
-        totalD_field.setBackground(new java.awt.Color(217, 217, 217));
+        totalD_field.setBackground(new java.awt.Color(153, 153, 153));
         totalD_field.setFont(new java.awt.Font("Gadugi", 0, 12)); // NOI18N
-        totalD_field.setForeground(new java.awt.Color(29, 53, 87));
+        totalD_field.setForeground(new java.awt.Color(0, 0, 0));
 
         ta_label.setFont(new java.awt.Font("Gadugi", 1, 12)); // NOI18N
         ta_label.setForeground(new java.awt.Color(0, 0, 0));
         ta_label.setText("Total Allowances:");
 
-        totalA_field.setBackground(new java.awt.Color(217, 217, 217));
+        totalA_field.setBackground(new java.awt.Color(153, 153, 153));
         totalA_field.setFont(new java.awt.Font("Gadugi", 0, 12)); // NOI18N
-        totalA_field.setForeground(new java.awt.Color(29, 53, 87));
+        totalA_field.setForeground(new java.awt.Color(0, 0, 0));
 
         basicsalary_label.setFont(new java.awt.Font("Gadugi", 1, 12)); // NOI18N
         basicsalary_label.setForeground(new java.awt.Color(0, 0, 0));
         basicsalary_label.setText("Basic Salary:");
 
-        basicsalary_field.setBackground(new java.awt.Color(217, 217, 217));
+        basicsalary_field.setBackground(new java.awt.Color(153, 153, 153));
         basicsalary_field.setFont(new java.awt.Font("Gadugi", 0, 12)); // NOI18N
-        basicsalary_field.setForeground(new java.awt.Color(29, 53, 87));
+        basicsalary_field.setForeground(new java.awt.Color(0, 0, 0));
 
         grosspay_label.setFont(new java.awt.Font("Gadugi", 1, 12)); // NOI18N
         grosspay_label.setForeground(new java.awt.Color(0, 0, 0));
         grosspay_label.setText("Gross Pay:");
 
-        grosspay_field.setBackground(new java.awt.Color(217, 217, 217));
+        grosspay_field.setBackground(new java.awt.Color(153, 153, 153));
         grosspay_field.setFont(new java.awt.Font("Gadugi", 0, 12)); // NOI18N
-        grosspay_field.setForeground(new java.awt.Color(29, 53, 87));
+        grosspay_field.setForeground(new java.awt.Color(0, 0, 0));
 
         buttonGroup1.add(tax1_radio);
         tax1_radio.setFont(new java.awt.Font("Gadugi", 0, 12)); // NOI18N
@@ -358,17 +365,17 @@ public class EmployeePayroll extends javax.swing.JFrame {
         tax_label.setForeground(new java.awt.Color(0, 0, 0));
         tax_label.setText("Withholding Tax:");
 
-        tax_field.setBackground(new java.awt.Color(217, 217, 217));
+        tax_field.setBackground(new java.awt.Color(153, 153, 153));
         tax_field.setFont(new java.awt.Font("Gadugi", 0, 12)); // NOI18N
-        tax_field.setForeground(new java.awt.Color(29, 53, 87));
+        tax_field.setForeground(new java.awt.Color(0, 0, 0));
 
         netpay_label.setFont(new java.awt.Font("Gadugi", 1, 12)); // NOI18N
         netpay_label.setForeground(new java.awt.Color(0, 0, 0));
         netpay_label.setText("Net Pay:");
 
-        netpay_field.setBackground(new java.awt.Color(217, 217, 217));
+        netpay_field.setBackground(new java.awt.Color(153, 153, 153));
         netpay_field.setFont(new java.awt.Font("Gadugi", 0, 12)); // NOI18N
-        netpay_field.setForeground(new java.awt.Color(29, 53, 87));
+        netpay_field.setForeground(new java.awt.Color(0, 0, 0));
 
         calculateButton.setBackground(new java.awt.Color(51, 0, 0));
         calculateButton.setForeground(new java.awt.Color(217, 217, 217));
@@ -389,7 +396,7 @@ public class EmployeePayroll extends javax.swing.JFrame {
             }
         });
 
-        paySlipArea.setBackground(new java.awt.Color(204, 204, 204));
+        paySlipArea.setBackground(new java.awt.Color(153, 153, 153));
         paySlipArea.setColumns(20);
         paySlipArea.setFont(new java.awt.Font("DialogInput", 0, 11)); // NOI18N
         paySlipArea.setForeground(new java.awt.Color(29, 53, 87));
@@ -418,6 +425,15 @@ public class EmployeePayroll extends javax.swing.JFrame {
         payperiod_lbl.setFont(new java.awt.Font("Gadugi", 1, 12)); // NOI18N
         payperiod_lbl.setForeground(new java.awt.Color(0, 0, 0));
         payperiod_lbl.setText("Pay Period :");
+
+        printBtn.setBackground(new java.awt.Color(51, 0, 0));
+        printBtn.setForeground(new java.awt.Color(255, 255, 255));
+        printBtn.setText("Print");
+        printBtn.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                printBtnActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -459,11 +475,7 @@ public class EmployeePayroll extends javax.swing.JFrame {
                                                     .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                                     .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                                         .addComponent(grosspay_field, javax.swing.GroupLayout.PREFERRED_SIZE, 130, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                                        .addComponent(basicsalary_field, javax.swing.GroupLayout.PREFERRED_SIZE, 130, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                                                .addGroup(jPanel1Layout.createSequentialGroup()
-                                                    .addComponent(date)
-                                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                                    .addComponent(time)))))
+                                                        .addComponent(basicsalary_field, javax.swing.GroupLayout.PREFERRED_SIZE, 130, javax.swing.GroupLayout.PREFERRED_SIZE))))))
                                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
                                         .addComponent(riceA_label)
                                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -521,19 +533,30 @@ public class EmployeePayroll extends javax.swing.JFrame {
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addComponent(employeeid_field, javax.swing.GroupLayout.PREFERRED_SIZE, 195, javax.swing.GroupLayout.PREFERRED_SIZE))
                             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                                .addComponent(noe_label)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(ename_field, javax.swing.GroupLayout.PREFERRED_SIZE, 195, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                                .addComponent(noe_label1)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(ename_field1, javax.swing.GroupLayout.PREFERRED_SIZE, 192, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                                        .addComponent(noe_label)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED))
+                                    .addGroup(jPanel1Layout.createSequentialGroup()
+                                        .addComponent(noe_label1)
+                                        .addGap(9, 9, 9)))
+                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                    .addComponent(ename_field1)
+                                    .addComponent(ename_field, javax.swing.GroupLayout.DEFAULT_SIZE, 195, Short.MAX_VALUE))))
                         .addGap(103, 103, 103)
                         .addComponent(clearButton1)
-                        .addGap(353, 353, 353))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(printBtn)
+                        .addGap(266, 266, 266))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
                         .addComponent(backButton)
-                        .addGap(17, 17, 17))))
+                        .addGap(23, 23, 23))))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                .addGap(0, 0, Short.MAX_VALUE)
+                .addComponent(date)
+                .addGap(45, 45, 45)
+                .addComponent(time)
+                .addGap(57, 57, 57))
             .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(jPanel1Layout.createSequentialGroup()
                     .addGap(10, 10, 10)
@@ -544,11 +567,11 @@ public class EmployeePayroll extends javax.swing.JFrame {
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(30, 30, 30)
+                .addGap(18, 18, 18)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(time)
                     .addComponent(date))
-                .addGap(7, 7, 7)
+                .addGap(19, 19, 19)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(employeeid_field, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(employeeid_label))
@@ -556,7 +579,8 @@ public class EmployeePayroll extends javax.swing.JFrame {
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(ename_field, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(noe_label)
-                    .addComponent(clearButton1))
+                    .addComponent(clearButton1)
+                    .addComponent(printBtn))
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -571,6 +595,30 @@ public class EmployeePayroll extends javax.swing.JFrame {
                             .addComponent(payperiod_lbl))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(jPanel1Layout.createSequentialGroup()
+                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                    .addComponent(riceA_label)
+                                    .addComponent(riceA_field, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                    .addComponent(phoneA_label)
+                                    .addComponent(phoneA_field, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                    .addComponent(clothingA_label)
+                                    .addComponent(clothing_field, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addGap(34, 34, 34)
+                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                    .addComponent(ta_label)
+                                    .addComponent(totalA_field, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                    .addComponent(basicsalary_label)
+                                    .addComponent(basicsalary_field, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                    .addComponent(grosspay_label)
+                                    .addComponent(grosspay_field, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
                             .addGroup(jPanel1Layout.createSequentialGroup()
                                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                                     .addComponent(hoursWorked_lb)
@@ -607,41 +655,16 @@ public class EmployeePayroll extends javax.swing.JFrame {
                                         .addComponent(tax_label)
                                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                         .addComponent(netpay_label)))
-                                .addGap(18, 18, 18)
+                                .addGap(27, 27, 27)
                                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                                    .addComponent(payslipButton)
-                                    .addComponent(calculateButton)))
-                            .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                                    .addComponent(riceA_label)
-                                    .addComponent(riceA_field, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                                    .addComponent(phoneA_label)
-                                    .addComponent(phoneA_field, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                                    .addComponent(clothingA_label)
-                                    .addComponent(clothing_field, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                .addGap(34, 34, 34)
-                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                                    .addComponent(ta_label)
-                                    .addComponent(totalA_field, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                                    .addComponent(basicsalary_label)
-                                    .addComponent(basicsalary_field, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                                    .addComponent(grosspay_label)
-                                    .addComponent(grosspay_field, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                        .addGap(0, 0, Short.MAX_VALUE))
+                                    .addComponent(calculateButton)
+                                    .addComponent(payslipButton)))))
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGap(28, 28, 28)
-                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 364, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 53, Short.MAX_VALUE)
-                        .addComponent(backButton)))
-                .addContainerGap())
+                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 364, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 21, Short.MAX_VALUE)
+                .addComponent(backButton)
+                .addGap(17, 17, 17))
             .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(jPanel1Layout.createSequentialGroup()
                     .addGap(44, 44, 44)
@@ -912,6 +935,21 @@ public class EmployeePayroll extends javax.swing.JFrame {
         }           
     }//GEN-LAST:event_ComboBoxActionPerformed
 
+    private void printBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_printBtnActionPerformed
+        // print payslip
+         MessageFormat header = new MessageFormat("Employee Payslip"); 
+  
+        try {
+           
+         paySlipArea.print();
+         JOptionPane.showMessageDialog(null, "Printed Successfully");
+         
+     }  catch (java.awt.print.PrinterException e) {
+            JOptionPane.showMessageDialog(null, "Failed");
+     }
+
+    }//GEN-LAST:event_printBtnActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -986,6 +1024,7 @@ public class EmployeePayroll extends javax.swing.JFrame {
     private javax.swing.JButton payslipButton;
     private javax.swing.JTextField phoneA_field;
     private javax.swing.JLabel phoneA_label;
+    private javax.swing.JButton printBtn;
     private javax.swing.JTextField riceA_field;
     private javax.swing.JLabel riceA_label;
     private javax.swing.JTextField sss_field;

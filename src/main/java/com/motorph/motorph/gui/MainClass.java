@@ -17,13 +17,14 @@ public class MainClass extends JFrame {
         
         conn = Postgresql.java_db();
     }
-    
+ 
     public void init() {
         setTitle ("Motor PH Employee Portal");
         setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
         setVisible(true);
         
     }
- 
 }
+    
+
 

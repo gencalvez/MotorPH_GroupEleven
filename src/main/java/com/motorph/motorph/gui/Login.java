@@ -29,9 +29,10 @@ public class Login extends javax.swing.JFrame {
         Toolkit toolkit=getToolkit();
         Dimension size=toolkit.getScreenSize();
         setLocation(size.width/2-getWidth()/2,size.height/2-getHeight()/2);
+        this.setResizable(false);
         
         conn = Postgresql.java_db();
-    }
+  }
    
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
@@ -60,7 +61,7 @@ public class Login extends javax.swing.JFrame {
 
         titleUserID.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         titleUserID.setForeground(new java.awt.Color(217, 217, 217));
-        titleUserID.setText("User ID");
+        titleUserID.setText("Username");
 
         titlePassword.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         titlePassword.setForeground(new java.awt.Color(217, 217, 217));
@@ -107,34 +108,35 @@ public class Login extends javax.swing.JFrame {
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGap(217, 217, 217)
-                .addComponent(rememberPass, javax.swing.GroupLayout.PREFERRED_SIZE, 139, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(40, 40, 40)
-                .addComponent(showPassword, javax.swing.GroupLayout.PREFERRED_SIZE, 135, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(246, 246, 246)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(titleUserID)
+                    .addComponent(userIDtext, javax.swing.GroupLayout.PREFERRED_SIZE, 214, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(titlePassword)
+                    .addComponent(passwordText, javax.swing.GroupLayout.PREFERRED_SIZE, 214, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(0, 0, Short.MAX_VALUE))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
                 .addContainerGap(155, Short.MAX_VALUE)
+                .addComponent(motorPhTitle)
+                .addGap(143, 143, 143))
+            .addGroup(jPanel1Layout.createSequentialGroup()
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                        .addComponent(motorPhTitle)
-                        .addGap(143, 143, 143))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(titleUserID)
-                            .addComponent(userIDtext, javax.swing.GroupLayout.PREFERRED_SIZE, 214, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(titlePassword)
-                            .addComponent(passwordText, javax.swing.GroupLayout.PREFERRED_SIZE, 214, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(244, 244, 244))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                        .addComponent(logInButton)
-                        .addGap(315, 315, 315))))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGap(184, 184, 184)
+                        .addComponent(rememberPass, javax.swing.GroupLayout.PREFERRED_SIZE, 139, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(79, 79, 79)
+                        .addComponent(showPassword, javax.swing.GroupLayout.PREFERRED_SIZE, 135, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGap(323, 323, 323)
+                        .addComponent(logInButton)))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addGap(109, 109, 109)
                 .addComponent(motorPhTitle)
-                .addGap(47, 47, 47)
+                .addGap(46, 46, 46)
                 .addComponent(titleUserID)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(userIDtext, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -142,20 +144,20 @@ public class Login extends javax.swing.JFrame {
                 .addComponent(titlePassword)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(passwordText, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(33, 33, 33)
+                .addGap(30, 30, 30)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(rememberPass)
                     .addComponent(showPassword))
-                .addGap(45, 45, 45)
+                .addGap(38, 38, 38)
                 .addComponent(logInButton)
-                .addContainerGap(80, Short.MAX_VALUE))
+                .addContainerGap(91, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -185,14 +187,16 @@ public class Login extends javax.swing.JFrame {
                 if(rs.next()){
                  EmployeeAccessPortal employeeAccessPortal = new EmployeeAccessPortal (username);
                     employeeAccessPortal.setVisible(true);
-
                     setVisible(false);
+           
 
                 }else if(userIDtext.getText().contains("Admin") && passwordText.getText().contains("qwerty")) {
                     JOptionPane.showMessageDialog(null, "Log in Successful");
-                    EmployeePortal employeePortal = new EmployeePortal ();
+                    
+                    
+                    EmployeePortal employeePortal = new EmployeePortal();
                     employeePortal.show();
-
+                   
                     dispose();
 
                 }else if(userIDtext.getText().equals("")){
@@ -206,7 +210,7 @@ public class Login extends javax.swing.JFrame {
                 }
 
             } catch (Exception ex) {
-                JOptionPane.showMessageDialog(null, ex.getMessage());
+                JOptionPane.showMessageDialog(null, ex.getMessage()); 
             }
         }
     }//GEN-LAST:event_passwordTextKeyPressed
@@ -215,43 +219,50 @@ public class Login extends javax.swing.JFrame {
         // login action
         String username = userIDtext.getText();
         String password1 = passwordText.getText();
-
+        
         try {
             Class.forName("org.postgresql.Driver");
             Connection conn = DriverManager.getConnection(url,user,password);
             String sql = "SELECT * FROM employee_data WHERE username =? and password =?";
-
+            
             pst=conn.prepareStatement(sql);
             pst.setString(1, username);
             pst.setString(2, password1);
-            rs=pst.executeQuery();
 
+            rs=pst.executeQuery();
+           
             if(rs.next()){
+                
                 EmployeeAccessPortal employeeAccessPortal = new EmployeeAccessPortal (username);
                 employeeAccessPortal.setVisible(true);
-
                 setVisible(false);
-
+                employeeAccessPortal.pack();
+                employeeAccessPortal.setLocationRelativeTo(null);
+                employeeAccessPortal.userName.setText("Welcome, " + rs.getString(2));
+                
+                
             }else if(userIDtext.getText().contains("Admin") && passwordText.getText().contains("qwerty")) {
                 JOptionPane.showMessageDialog(null, "Log in Successful");
                 EmployeePortal employeePortal = new EmployeePortal ();
+                employeePortal.pack();
+                employeePortal.setLocationRelativeTo(null);
+                employeePortal.welcome_txt.setText("Welcome, " + userIDtext.getText() + "!");
                 employeePortal.show();
-
                 dispose();
-
+                
             }else if(userIDtext.getText().equals("")){
                 JOptionPane.showMessageDialog(null, "Please Fill Out User ID");
-
+            
             }else if(passwordText.getText().equals("")){
-                JOptionPane.showMessageDialog(null, "Please Fill Out Password");
-
+               JOptionPane.showMessageDialog(null, "Please Fill Out Password");                 
+               
             }else{
-                JOptionPane.showMessageDialog(null, "Wrong User ID or Password");
+                JOptionPane.showMessageDialog(null, "Wrong User ID or Password");  
+            } 
+                    
+            } catch (Exception ex) {
+                JOptionPane.showMessageDialog(null, ex.getMessage()); 
             }
-
-        } catch (Exception ex) {
-            JOptionPane.showMessageDialog(null, ex.getMessage());
-        }
     }//GEN-LAST:event_logInButtonActionPerformed
 
     private void showPasswordActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_showPasswordActionPerformed
@@ -313,4 +324,5 @@ public class Login extends javax.swing.JFrame {
     private javax.swing.JLabel titleUserID;
     private javax.swing.JTextField userIDtext;
     // End of variables declaration//GEN-END:variables
+
 }
